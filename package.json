@@ -1,0 +1,58 @@
+{
+    "name": "platformio",
+    "displayName": "platformio",
+    "description": "PlatformIO IDE Integration",
+    "version": "0.0.1",
+    "publisher": "fabianofranca",
+    "engines": {
+        "vscode": "^1.0.0"
+    },
+    "categories": [
+        "Productivity",
+        "IoT",
+        "Other"
+    ],
+    "keywords": [
+        "IoT",
+        "Arduino",
+        "Internet of Things",
+        "platformio"
+    ],    
+    "activationEvents": [
+        "onCommand:platformio.update",
+        "onCommand:platformio.upgrade",
+        "onCommand:platformio.platforms.list",
+        "onCommand:platformio.boards",        
+        "onCommand:platformio.selectPort",
+        "onCommand:platformio.build",
+        "onCommand:platformio.upload"
+    ],
+    "main": "./out/src/extension",
+    "contributes": {
+        "commands": [{
+            "command": "platformio.update",
+            "title": "PlatformIO - Update"
+        },{
+            "command": "platformio.upgrade",
+            "title": "PlatformIO - Upgrade"
+        },{
+            "command": "platformio.selectPort",
+            "title": "PlatformIO - Select Port"
+        }, {
+            "command": "platformio.build",
+            "title": "PlatformIO - Build"
+        }, {
+            "command": "platformio.updload",
+            "title": "PlatformIO - Upload"
+        }]
+    },
+    "scripts": {
+        "vscode:prepublish": "node ./node_modules/vscode/bin/compile",
+        "compile": "node ./node_modules/vscode/bin/compile -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install"
+    },
+    "devDependencies": {
+        "typescript": "^1.8.5",
+        "vscode": "^0.11.0"
+    }
+}
