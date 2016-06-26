@@ -8,7 +8,8 @@ export class PlatformIO {
     private port: string;
 
     private COMMAND = 'platformio ';
-    private UPDATE = ' update';
+    private UPDATE = 'update';
+    private UPGRADE = 'upgrade';
     // private LIST_PORTS = ' serialports list --json-output';
 
     constructor() {
@@ -19,7 +20,7 @@ export class PlatformIO {
     private run(params: string, out: (data) => void, err?: (data) => void, close?: (code) => void) {
         let exec = require('child_process').exec;
         
-        let process = exec(this.COMMAND + params);
+        let process = exec(this.COMMAND + ' ' + params);
 
         process.stdout.on('data', out);
 
@@ -41,6 +42,19 @@ export class PlatformIO {
         this.outputChannel.appendLine('[' + tag + ']');
 
         this.run(this.UPDATE, (result) => {
+            me.outputChannel.append(result);
+        });
+    }
+
+    public upgrade() {
+        var me = this;
+        var tag = 'PlatformIO - Upgrade';
+
+        this.outputChannel.clear();
+        this.outputChannel.show();
+        this.outputChannel.appendLine('[' + tag + ']');
+
+        this.run(this.UPGRADE, (result) => {
             me.outputChannel.append(result);
         });
     }

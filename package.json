@@ -44,7 +44,16 @@
         }, {
             "command": "platformio.updload",
             "title": "PlatformIO - Upload"
-        }]
+        }],
+        "keybindings": [
+            {
+                "key": "ctrl+p ctrl+u",
+                "command": "platformio.update"
+            }, {
+                "key": "ctrl+p ctrl+p",
+                "command": "platformio.upgrade"
+            }
+        ]
     },
     "scripts": {
         "vscode:prepublish": "node ./node_modules/vscode/bin/compile",

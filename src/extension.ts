@@ -12,6 +12,10 @@ export function activate(context: vscode.ExtensionContext) {
         io.update();
     });
 
+    let upgrade = vscode.commands.registerCommand('platformio.upgrade', () => {
+        io.upgrade();
+    });
+
     // let selectPort = commands.registerCommand('platformio.selectPort', async () => {
     //     await platformio.selectPorts().then();
     // });
@@ -20,6 +24,8 @@ export function activate(context: vscode.ExtensionContext) {
     //     await platformio.build().then();
     // });    
 
+    context.subscriptions.push(update);
+    context.subscriptions.push(upgrade);
     // context.subscriptions.push(selectPort);
     // context.subscriptions.push(build);
 }
